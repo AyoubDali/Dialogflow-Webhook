@@ -15,17 +15,17 @@ restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
  
-  https.get('https://www.googleapis.com/books/v1/volumes?q=subject:fiction', (resp) => {
+  https.get('https://www.googleapis.com/books/v1/volumes?q=subject:fiction', (res) => {
 
     let data = '';
 
     // A chunk of data has been recieved.
-    resp.on('data', (chunk) => {
+    res.on('data', (chunk) => {
       data += chunk;
     });
   
     // The whole response has been received. Print out the result.
-    resp.on('end', () => {
+    res.on('end', () => {
       console.log(JSON.parse(data).explanation);
     });
   
